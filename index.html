@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exersare module JS</title>
+</head>
+
+<body>
+    <h1>Parcarea mea de vehicule</h1>
+    <div id="pageContainer" class="page-container">
+        <form id="vehiculForm" class="vehicul-form">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" required>
+            <br>
+            <label for="model">Model:</label>
+            <input type="text" id="model" required>
+            <br>
+            <label for="an">An:</label>
+            <input type="date" id="an" required>
+            <br>
+            <label for="tip">Tip:</label>
+            <select id="tip">
+                <option value="masina">Mașină</option>
+                <option value="motocicleta">Motocicletă</option>
+            </select>
+            <br>
+            <label for="extra">Tip Caroserie / Cilindri:</label>
+            <input type="text" id="extra" placeholder="SUV / 1000cc" required>
+            <br><br>
+            <button type="submit">Adaugă Vehicul</button>
+
+        </form>
+        <h2>Vehicule în parcare:</h2>
+        <br>
+        <pre id="parcareAuto"></pre>
+        <br>
+        <button class="btn-remove">Sterge Vehicul</button>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
