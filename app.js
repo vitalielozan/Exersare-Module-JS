@@ -1,5 +1,6 @@
 import Flota from './flota.mjs';
 import { Masina, Motocicleta } from './vehicul.mjs';
+import Vehicul from './vehicul.mjs';
 
 const flotaMea = new Flota();
 

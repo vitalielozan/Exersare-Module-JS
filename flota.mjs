@@ -1,10 +1,9 @@
 import { Masina, Motocicleta } from './vehicul.mjs';
-import Vehicul from './vehicul.mjs';
 
 export default class Flota {
     constructor() {
         this.vehicule = this.fromLocalStorage() || [];
-        const btnRemove = document.querySelector(".btn-remove");
+        const btnRemove = document.querySelector("#btnRemove");
         btnRemove.addEventListener("click", () => {
             this.delFromLocalStorage();
             // Aici as dori sa resetez afisarea paginii fara sa fac refresh
