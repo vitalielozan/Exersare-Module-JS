@@ -1,23 +1,14 @@
-import { Masina, Motocicleta } from './vehicul.mjs';
+import Masina from './masina.mjs';
+import Motocicleta from './motocicleta.mjs';
 
 export default class Flota {
     constructor() {
         this.vehicule = this.fromLocalStorage() || [];
-        const btnRemove = document.querySelector("#btnRemove");
-        btnRemove.addEventListener("click", () => {
-            this.delFromLocalStorage();
-            // Aici as dori sa resetez afisarea paginii fara sa fac refresh
-            this.afiseazaFlotaInitiala();
-        });
     }
 
     adaugaVehicul(vehicul) {
         this.vehicule.push(vehicul);
         this.toLocalStorage();
-    }
-
-    afiseazaFlotaInitiala() {
-        return this.vehicule.map(v => v.descriere()).join('\n') || "Parcarea este goala...";
     }
 
     toLocalStorage() {
@@ -34,13 +25,15 @@ export default class Flota {
         if (dateSalvate) {
             const vehiculeJSON = JSON.parse(dateSalvate);
             return vehiculeJSON.map(v => {
-                if (v.tipCaroserie) {
+                if (v.tipCaroserie !== undefined) {
                     return Masina.fromJSON(v);
-                } else if (v.cilindri) {
+                } else if (v.cilindri !== undefined) {
                     return Motocicleta.fromJSON(v);
+                } else {
+                    return Vehicul.fromJSON(v);
                 }
             });
         }
-        return null;
+        return [];
     }
 }

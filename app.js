@@ -1,15 +1,31 @@
 import Flota from './flota.mjs';
-import { Masina, Motocicleta } from './vehicul.mjs';
-import Vehicul from './vehicul.mjs';
+import Masina from './masina.mjs';
+import Motocicleta from './motocicleta.mjs';
 
 const flotaMea = new Flota();
 
 function afiseazaFlota() {
     const parcareAuto = document.querySelector('#parcareAuto');
-    parcareAuto.innerHTML = flotaMea.afiseazaFlotaInitiala();
+    parcareAuto.innerHTML = "";
 
+    if (flotaMea.vehicule.length === 0) {
+        parcareAuto.innerHTML = "<p>Parcarea este goala...</p>";
+        return;
+    }
+    flotaMea.vehicule.forEach(vehicul => {
+        const vechiculElement = document.createElement("p");
+        vechiculElement.textContent = vehicul.descriere();
+        parcareAuto.appendChild(vechiculElement);
+    });
 }
 
+const btnRemove = document.querySelector("#btnRemove");
+btnRemove.addEventListener("click", () => {
+    flotaMea.delFromLocalStorage();
+    flotaMea.vehicule = [];
+    flotaMea.toLocalStorage();
+    afiseazaFlota();
+});
 
 const vehiculForm = document.querySelector('#vehiculForm');
 vehiculForm.addEventListener('submit', (event) => {
