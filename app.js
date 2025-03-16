@@ -41,12 +41,14 @@ vehiculForm.addEventListener('submit', (event) => {
     if (tip === 'masina') {
         if (isNaN(extra)) {
             vehicul = new Masina(marca, model, an, extra);
+            flotaMea.adaugaVehicul(vehicul);
         } else {
             alert('Valoarea introdusă pentru caroserie nu este validă. Introduceți date corecte!');
         }
     } else if (tip === 'motocicleta') {
         if (!isNaN(extra)) {
             vehicul = new Motocicleta(marca, model, an, extra);
+            flotaMea.adaugaVehicul(vehicul);
         } else {
             alert('Valoarea introdusă pentru cilindri nu este validă. Introduceți date corecte!');
         }
@@ -54,7 +56,6 @@ vehiculForm.addEventListener('submit', (event) => {
         alert('Tipul de vehicul nu este recunoscut.');
     }
 
-    flotaMea.adaugaVehicul(vehicul);
     afiseazaFlota();
     document.querySelector('#vehiculForm').reset();
 });
