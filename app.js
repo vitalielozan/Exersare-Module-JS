@@ -39,14 +39,23 @@ vehiculForm.addEventListener('submit', (event) => {
 
     let vehicul;
     if (tip === 'masina') {
-        vehicul = new Masina(marca, model, an, extra);
+        if (isNaN(extra)) {
+            vehicul = new Masina(marca, model, an, extra);
+        } else {
+            alert('Valoarea introdusă pentru caroserie nu este validă. Introduceți date corecte!');
+        }
+    } else if (tip === 'motocicleta') {
+        if (!isNaN(extra)) {
+            vehicul = new Motocicleta(marca, model, an, extra);
+        } else {
+            alert('Valoarea introdusă pentru cilindri nu este validă. Introduceți date corecte!');
+        }
     } else {
-        vehicul = new Motocicleta(marca, model, an, extra);
+        alert('Tipul de vehicul nu este recunoscut.');
     }
 
     flotaMea.adaugaVehicul(vehicul);
     afiseazaFlota();
-
     document.querySelector('#vehiculForm').reset();
 });
 
