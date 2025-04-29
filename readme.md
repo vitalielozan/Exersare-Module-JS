@@ -11,3 +11,8 @@
 - HTML
 - CSS
 - Javascript
+- Json-server
+
+# Start server:
+
+- npm run start

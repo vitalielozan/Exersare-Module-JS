@@ -19,16 +19,13 @@ export default class Flota {
   async addDataToJson(vehicul) {
     try {
       const formData = vehicul;
-      const response = await fetch(
-        'https://my-json-server-five.vercel.app/vehiculs',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch('http://localhost:3001/vehiculs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       const data = await response.json();
       console.log('Date salvate');
       return data;
@@ -39,9 +36,7 @@ export default class Flota {
 
   async deleteAllVehicul() {
     try {
-      const response = await fetch(
-        'https://my-json-server-five.vercel.app/vehiculs'
-      );
+      const response = await fetch('http://localhost:3001/vehiculs');
       const vehiculs = await response.json();
 
       await Promise.all(vehiculs.map((v) => this.deleteDataFromJson(v.id)));
@@ -54,7 +49,7 @@ export default class Flota {
 
   async deleteDataFromJson(id) {
     try {
-      await fetch(`https://my-json-server-five.vercel.app/vehiculs/${id}`, {
+      await fetch(`http://localhost:3001/vehiculs/${id}`, {
         method: 'DELETE',
       });
     } catch (error) {

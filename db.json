@@ -1,0 +1,11 @@
+{
+  "vehiculs": [
+    {
+      "marca": "VW",
+      "model": "Passat",
+      "an": 2015,
+      "tipCaroserie": "variant",
+      "id": 1
+    }
+  ]
+}
